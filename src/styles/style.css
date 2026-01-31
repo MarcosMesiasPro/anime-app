@@ -1,0 +1,376 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   GLOBAL STYLES
+   ============================================ */
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 text-white antialiased;
+    background-attachment: fixed;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 182, 193, 0.5) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #FFB7C5, #9370DB);
+    border-radius: 10px;
+  }
+}
+
+/* ============================================
+   GLASS MORPHISM
+   ============================================ */
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  @apply glass rounded-xl;
+}
+
+.glass-hover {
+  @apply glass transition-all duration-300;
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 48px rgba(31, 38, 135, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   ANIME GRID
+   ============================================ */
+
+.anime-grid {
+  @apply grid gap-6;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+@media (min-width: 640px) {
+  .anime-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .anime-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+/* ============================================
+   ANIME CARD
+   ============================================ */
+
+.anime-card {
+  @apply glass-card overflow-hidden cursor-pointer;
+  @apply transition-all duration-300 ease-out;
+  @apply hover:-translate-y-3 hover:scale-[1.02];
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.anime-card:hover {
+  box-shadow: 0 20px 40px rgba(236, 72, 153, 0.35),
+              0 0 25px rgba(168, 85, 247, 0.25);
+}
+
+.anime-card .cover-image {
+  @apply w-full h-full object-cover transition-transform duration-500;
+}
+
+.anime-card:hover .cover-image {
+  @apply scale-110;
+}
+
+/* ============================================
+   BADGES & PILLS
+   ============================================ */
+
+.badge {
+  @apply glass rounded-full px-3 py-1 text-xs font-semibold;
+  @apply transition-all duration-200;
+}
+
+.badge-genre {
+  @apply badge;
+  background: linear-gradient(135deg, rgba(147, 112, 219, 0.3), rgba(236, 72, 153, 0.3));
+  border: 1px solid rgba(147, 112, 219, 0.4);
+  @apply text-purple-200;
+}
+
+.badge-genre:hover {
+  background: linear-gradient(135deg, rgba(147, 112, 219, 0.5), rgba(236, 72, 153, 0.5));
+  @apply scale-105;
+}
+
+.badge-rating {
+  @apply glass rounded-lg px-2 py-1 flex items-center gap-1;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.badge-format {
+  @apply badge;
+  background: rgba(6, 182, 212, 0.3);
+  border: 1px solid rgba(6, 182, 212, 0.5);
+  @apply text-cyan-200;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn-primary {
+  @apply glass-card px-6 py-2.5 font-semibold;
+  @apply transition-all duration-300 hover:scale-105;
+  @apply hover:shadow-lg hover:shadow-sakura/50;
+  @apply active:scale-95;
+}
+
+.favorite-btn {
+  @apply glass rounded-full p-2.5 transition-all duration-300;
+  @apply hover:scale-110 hover:bg-white/20;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.favorite-btn.is-favorite {
+  @apply text-red-500 animate-heartbeat;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+}
+
+/* ============================================
+   TABS
+   ============================================ */
+
+.tab-btn {
+  @apply px-6 py-3 rounded-t-xl font-semibold transition-all duration-300;
+  @apply text-gray-400;
+}
+
+.tab-btn:hover {
+  @apply bg-white/5 text-white;
+}
+
+.tab-btn.active {
+  @apply text-white;
+  background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(147, 112, 219, 0.2));
+  border-bottom: 3px solid #FFB7C5;
+  box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
+}
+
+/* ============================================
+   MODAL
+   ============================================ */
+
+#animeModal {
+  @apply animate-fadeIn;
+}
+
+#animeModal .modal-content {
+  @apply animate-slideUp;
+}
+
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.character-card {
+  @apply glass-card overflow-hidden transition-all duration-300;
+  @apply hover:bg-white/10 hover:scale-105;
+}
+
+/* ============================================
+   SEARCH BAR
+   ============================================ */
+
+#searchInput {
+  @apply glass-card w-full py-3 px-4 pl-11 pr-11;
+  @apply text-white placeholder-gray-400;
+  @apply focus:outline-none focus:border-sakura focus:ring-2 focus:ring-sakura/50;
+  @apply transition-all duration-300;
+}
+
+#searchInput:focus {
+  box-shadow: 0 0 0 3px rgba(255, 182, 193, 0.2);
+}
+
+/* ============================================
+   SKELETON LOADER
+   ============================================ */
+
+.skeleton-card {
+  @apply glass-card overflow-hidden;
+  position: relative;
+}
+
+.skeleton-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ============================================
+   LOADING SPINNER
+   ============================================ */
+
+.loading-spinner {
+  @apply w-12 h-12 border-4 border-white/20 border-t-sakura rounded-full;
+  animation: spin-glow 1s linear infinite;
+}
+
+@keyframes spin-glow {
+  0% {
+    transform: rotate(0deg);
+    filter: drop-shadow(0 0 5px rgba(255, 182, 193, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(255, 182, 193, 0.8));
+  }
+  100% {
+    transform: rotate(360deg);
+    filter: drop-shadow(0 0 5px rgba(255, 182, 193, 0.5));
+  }
+}
+
+/* ============================================
+   SCROLL TO TOP
+   ============================================ */
+
+#scrollToTop {
+  @apply fixed bottom-8 right-8 z-40;
+  @apply glass-card p-4 rounded-full shadow-2xl;
+  @apply opacity-0 pointer-events-none;
+  @apply transition-all duration-300;
+}
+
+#scrollToTop.show {
+  @apply opacity-100 pointer-events-auto;
+}
+
+#scrollToTop:hover {
+  @apply scale-110;
+  box-shadow: 0 0 30px rgba(255, 182, 193, 0.6);
+}
+
+/* ============================================
+   ENTRANCE ANIMATIONS
+   ============================================ */
+
+.anime-card {
+  animation: fadeInUp 0.5s ease-out backwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Staggered delays */
+.anime-card:nth-child(1) { animation-delay: 0.05s; }
+.anime-card:nth-child(2) { animation-delay: 0.1s; }
+.anime-card:nth-child(3) { animation-delay: 0.15s; }
+.anime-card:nth-child(4) { animation-delay: 0.2s; }
+.anime-card:nth-child(5) { animation-delay: 0.25s; }
+.anime-card:nth-child(6) { animation-delay: 0.3s; }
+.anime-card:nth-child(7) { animation-delay: 0.35s; }
+.anime-card:nth-child(8) { animation-delay: 0.4s; }
+.anime-card:nth-child(9) { animation-delay: 0.45s; }
+.anime-card:nth-child(10) { animation-delay: 0.5s; }
+.anime-card:nth-child(11) { animation-delay: 0.55s; }
+.anime-card:nth-child(12) { animation-delay: 0.6s; }
+.anime-card:nth-child(13) { animation-delay: 0.65s; }
+.anime-card:nth-child(14) { animation-delay: 0.7s; }
+.anime-card:nth-child(15) { animation-delay: 0.75s; }
+.anime-card:nth-child(16) { animation-delay: 0.8s; }
+.anime-card:nth-child(17) { animation-delay: 0.85s; }
+.anime-card:nth-child(18) { animation-delay: 0.9s; }
+.anime-card:nth-child(19) { animation-delay: 0.95s; }
+.anime-card:nth-child(20) { animation-delay: 1s; }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .anime-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .glass,
+  .glass-card {
+    backdrop-filter: blur(12px) saturate(150%);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+*:focus-visible {
+  @apply outline-none ring-2 ring-sakura ring-offset-2 ring-offset-slate-900;
+}
+
+::selection {
+  @apply bg-sakura/30 text-white;
+}

@@ -1,7 +1,8 @@
 {
-  "name": "anime-app",
+  "name": "anime-discovery-app",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Anime discovery app with AniList API",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -26,12 +26,12 @@ Una aplicación web moderna para descubrir y explorar anime usando la API de Ani
 
 ## 🚀 Demo Live
 
-[Ver Demo](https://anime-app-tu-usuario.vercel.app)
+[Ver Demo](https://anime-discovery-app.vercel.app/)
 
 ## 📦 Instalación Local
 ```bash
 # Clonar repositorio
-git clone https://github.com/tu-usuario/anime-app-final.git
+git clone git@github.com:MarcosMesiasPro/anime-app.git
 cd anime-app-final
 
 # Instalar dependencias
@@ -133,8 +133,7 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 ## 👨‍💻 Autor
 
 **Tu Nombre**
-- GitHub: [@tu-usuario](https://github.com/tu-usuario)
-- Portfolio: [tu-portfolio.com](https://tu-portfolio.com)
+- GitHub: [@MarcosMesiasPro](https://github.com/MarcosMesiasPro)
 
 ---
 
